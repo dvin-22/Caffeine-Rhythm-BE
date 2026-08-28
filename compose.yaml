@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: 'postgres:17-alpine'
+    container_name: caffeine-rhythm-db
+    environment:
+      - 'POSTGRES_DB=caffeine_rhythm'
+      - 'POSTGRES_USER=caffeine'
+      - 'POSTGRES_PASSWORD=caffeine'
+    ports:
+      - '5432:5432'
+    volumes:
+      - caffeine-rhythm-pgdata:/var/lib/postgresql/data
+
+volumes:
+  caffeine-rhythm-pgdata:
