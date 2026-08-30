@@ -1,6 +1,11 @@
 spring:
   application:
     name: caffeine-rhythm
+  datasource:
+    # 로컬 compose.yaml 의 Postgres. 운영에서는 SPRING_DATASOURCE_* 환경 변수가 덮어쓴다.
+    url: jdbc:postgresql://localhost:5432/caffeine_rhythm
+    username: caffeine
+    password: caffeine
   jpa:
     open-in-view: false
     hibernate:
@@ -15,12 +20,6 @@ spring:
 
 server:
   port: 8080
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
 
 app:
   cors:
