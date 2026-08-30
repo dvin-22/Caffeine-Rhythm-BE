@@ -18,10 +18,8 @@ class SecurityConfig(
     @param:Value("\${app.cors.allowed-origin}") private val allowedOrigin: String,
 ) {
 
-    /**
-     * S5 에서 카카오 OAuth2 로그인과 JWT 필터를 붙이기 전까지는 전부 열어 둔다.
-     * 토큰 기반이라 세션과 CSRF 는 쓰지 않는다.
-     */
+    /* 카카오 OAuth2 로그인과 JWT 인증을 구현하기 전까지는 모든 요청을 허용한다.
+    세션은 사용하지 않지만 Refresh Token 쿠키를 사용하므로, CSRF 방어는 인증 구현 시 추가한다. */
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http

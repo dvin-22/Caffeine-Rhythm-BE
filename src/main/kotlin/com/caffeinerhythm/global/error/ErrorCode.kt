@@ -2,10 +2,8 @@ package com.caffeinerhythm.global.error
 
 import org.springframework.http.HttpStatus
 
-/**
- * API 명세서의 Error code 와 Message 를 그대로 옮긴다.
- * 사용자에게 그대로 노출되므로 문구를 임의로 바꾸지 않는다.
- */
+/* API 명세서의 Error code 와 Message 를 그대로 옮긴다.
+사용자에게 그대로 노출되므로 문구를 임의로 바꾸지 않는다. */
 enum class ErrorCode(
     val status: HttpStatus,
     val message: String,
