@@ -111,6 +111,18 @@ class GoldenTimeCalculatorTest {
     }
 
     @Test
+    fun `청소년은 카페인이 더 높아도 일반 음료를 에너지음료보다 먼저 검토한다`() {
+        val highCaffeineEnergy = BeverageOption(9, "고카페인 에너지음료", 300, energyDrink = true)
+        val result = calculate(
+            profile = BiometricProfile(16, 60.0, 3),
+            candidates = listOf(americano, highCaffeineEnergy),
+        )
+
+        assertTrue(result.recommendations.isNotEmpty())
+        assertEquals(americano.id, result.recommendations.first().beverageId)
+    }
+
+    @Test
     fun `성인은 에너지음료를 한 캔으로 추천한다`() {
         val result = calculate(BiometricProfile(27, 70.0, 3), listOf(energy))
 

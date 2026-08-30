@@ -6,10 +6,8 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-/**
- * docs/03-도메인분석및구현전략.md 3-5 의 검증 표를 그대로 옮긴다.
- * 표준 성인 기준: 70kg, 반감기 5.0시간.
- */
+/* docs/03-도메인분석및구현전략.md 3-5 의 검증 표를 그대로 옮긴다.
+표준 성인 기준: 70kg, 반감기 5.0시간. */
 class ConcentrationCalculatorTest {
 
     private val weightKg = 70.0
