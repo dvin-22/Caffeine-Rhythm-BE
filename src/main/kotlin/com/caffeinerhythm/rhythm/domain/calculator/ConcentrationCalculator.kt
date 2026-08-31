@@ -8,13 +8,11 @@ import kotlin.math.exp
 import kotlin.math.ln
 
 /* 1구획 1차 흡수 모델.
-
-    C(t) = (F · D / Vd) × ka/(ka − ke) × ( e^(−ke·t) − e^(−ka·t) )
-
-기준은 체내 잔여량(mg)이 아니라 혈장 농도(mg/L)다. 그래야 체중이 계산에 반영된다.
-출처: Alsabri et al. (2018) */
+C(t) = (F · D / Vd) × ka/(ka − ke) × ( e^(−ke·t) − e^(−ka·t) )
+기준은 체내 잔여량(mg)이 아니라 혈장 농도(mg/L)다. */
 object ConcentrationCalculator {
 
+    // 한 건을 마신 뒤 농도가 [elapsedHours] 시간 후에 몇 mg/L인지 계산한다.
     fun singleDose(
         doseMg: Double,
         elapsedHours: Double,
@@ -32,6 +30,7 @@ object ConcentrationCalculator {
             (exp(-eliminationRate * elapsedHours) - exp(-absorptionRate * elapsedHours))
     }
 
+    // 여러 건을 마신 뒤 농도가 [at] 시간에 몇 mg/L인지 계산한다.
     fun concentrationAt(
         intakes: List<TimedDose>,
         at: LocalDateTime,
@@ -61,6 +60,7 @@ object ConcentrationCalculator {
         return (low + high) / 2
     }
 
+    // 여러 건을 마신 뒤 농도 곡선을 계산한다.
     fun curve(
         intakes: List<TimedDose>,
         from: LocalDateTime,
@@ -78,6 +78,7 @@ object ConcentrationCalculator {
         return points
     }
 
+    // [from] 부터 [to] 까지의 시간 차이를 시간 단위로 계산한다.
     private fun hoursBetween(from: LocalDateTime, to: LocalDateTime): Double =
         Duration.between(from, to).toMillis() / MILLIS_PER_HOUR
 

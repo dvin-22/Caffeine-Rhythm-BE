@@ -5,7 +5,7 @@ import kotlin.math.floor
 
 object DailyLimitCalculator {
 
-    /* 청소년의 상한은 체중에 비례한다(Health Canada 2.5 mg/kg).
+    /* 청소년의 상한은 체중에 비례한다.
     체중 미입력 청소년은 Vd 계산의 표준 70kg 대신 55kg를 써서 보수적으로 잡는다. */
     fun calculate(profile: BiometricProfile): Int {
         if (!profile.youth) return CaffeineConstants.ADULT_DAILY_LIMIT_MG
