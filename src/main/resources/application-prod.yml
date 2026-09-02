@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      # 운영 DB 스키마는 배포 마이그레이션이 관리한다.
+      ddl-auto: validate
+
+app:
+  cors:
+    allowed-origin: ${FRONTEND_ORIGIN}
