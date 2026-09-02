@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/caffeine_rhythm
+    username: caffeine
+    password: caffeine
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/migration/V2__seed.sql
+
+app:
+  cors:
+    allowed-origin: http://localhost:3000
+
+logging:
+  level:
+    org.hibernate.SQL: debug
